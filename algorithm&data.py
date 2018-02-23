@@ -116,7 +116,7 @@ def power(base, exponent):
     return result if exponent >= 0 else 1/result
 
 
-# 字符串的全排列
+# 7.字符串的全排列
 def f(s):
     result = []
     if len(s) == 0 or len(s) == 1:
@@ -131,7 +131,40 @@ def f(s):
     return result
 
 
+# 8. 1~n整数中1出现的次数
+def numbers_of_1(n):
+    numbers = 0
+    for i in range(1, n+1):
+        while i:
+            if i % 10 == 1:
+                numbers += 1
+            i //= 10
+    return numbers
+
+
+# 9.数字序列中某一位的数字
+def digit_at_index(index):
+    if index < 0:
+        return -1
+    left = 0
+    right = 9
+    wei = 1  # 数字位数
+    while True:
+        n = (right - left + 1) * wei
+        if index < n:
+            break
+        else:
+            left = right + 1
+            right = right * 10 + 9
+            wei += 1
+            index -= n
+    i = index // wei
+    j = index % wei
+    digit = str(left+i)[j]
+    return digit
+
+
 if __name__ == '__main__':
-    r = f('abc')
-    print(r)
+    index = 1001
+    print(digit_at_index(index))
 
