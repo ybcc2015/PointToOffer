@@ -120,7 +120,7 @@ def power(base, exponent):
 def f(s):
     result = []
     if len(s) == 0 or len(s) == 1:
-        return
+        return result.append(s)
     elif len(s) == 2:
         return [s, s[1]+s[0]]
     else:
@@ -164,7 +164,24 @@ def digit_at_index(index):
     return digit
 
 
-if __name__ == '__main__':
-    index = 1001
-    print(digit_at_index(index))
+# 10.从字符串中找出一个最长不含重复字符的子字符串,返回该最长子字符串的长度
+def longest_substr_without_duplication(string):
+    cur_len = 0
+    max_len = 0
+    d = {}
+    for i in range(len(string)):
+        if d.get(string[i]) is None or i - d.get(string[i]) > cur_len:
+            cur_len += 1
+        else:
+            if cur_len > max_len:
+                max_len = cur_len
+            cur_len = i - d.get(string[i])
+        d[string[i]] = i
+    if cur_len > max_len:
+        max_len = cur_len
+    return max_len
+
+
+# if __name__ == '__main__':
+#     print(longest_substr_without_duplication('aaaaaa'))
 
