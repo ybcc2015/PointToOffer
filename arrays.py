@@ -209,7 +209,24 @@ def max_sum_of_subarray(lst):
     return max_sum
 
 
+# 7.递增数组中数值与下标相等的元素(每个元素都是唯一的)
+def find_number_equal_index(lst):
+    if len(lst) == 0:
+        return -1
+    left = 0
+    right = len(lst) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if lst[mid] == mid:
+            return mid
+        if lst[mid] > mid:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return -1
+
+
 if __name__ == '__main__':
-    nums = [-1, -2, -3, -10]
-    print(max_sum_of_subarray(nums))
+    nums = [0]
+    print(find_number_equal_index(nums))
 

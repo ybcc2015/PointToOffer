@@ -137,6 +137,18 @@ def reverse_bintree(root):
     return root
 
 
+# 求二叉树的深度
+def tree_depth(root):
+    if root is None:
+        return 0
+
+    left_depth = tree_depth(root.left)
+    right_depth = tree_depth(root.right)
+
+    return left_depth+1 if left_depth > right_depth else right_depth+1
+
+
+
 if __name__ == '__main__':
     pre_lst = []
     in_lst = []
