@@ -182,6 +182,39 @@ def longest_substr_without_duplication(string):
     return max_len
 
 
-# if __name__ == '__main__':
-#     print(longest_substr_without_duplication('aaaaaa'))
+# 11.字符串转换为数字
+input_is_valid = True
+def str_to_int(s):
+    global input_is_valid
+    result = 0
+    digits = '0123456789'
+    if s == '':
+        input_is_valid = False
+        return 0
+
+    minus = False
+    if s[0] == '-':
+        minus = True
+        s = s[1:]
+    elif s[0] == '+':
+        s = s[1:]
+
+    if s == '':
+        input_is_valid = False
+        return 0
+
+    for c in s:
+        if c not in digits:
+            input_is_valid = False
+            return 0
+        else:
+            result = result * 10 + int(c)
+
+    if minus:
+        result = 0 - result
+    return result
+
+
+if __name__ == '__main__':
+    print(str_to_int(''), input_is_valid)
 
