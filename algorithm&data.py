@@ -215,6 +215,18 @@ def str_to_int(s):
     return result
 
 
+# 12.不用加减乘除实现加法
+def add(n1, n2):
+    while True:
+        sum = n1 ^ n2
+        carry = (n1 & n2) << 1
+        n1 = sum
+        n2 = carry
+        if carry == 0:
+            break
+    return n1
+
+
 if __name__ == '__main__':
-    print(str_to_int(''), input_is_valid)
+    print(add(100, 0))
 

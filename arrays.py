@@ -226,7 +226,24 @@ def find_number_equal_index(lst):
     return -1
 
 
+# 8.输入一个递增的数组和一个数字s,在数组中查找两个数,使他们的和正好等于s.
+#   返回这一对数字的下标.如果有多对数字,输出任意一对即可.
+def find_indexs(lst, s):
+    if len(lst) < 2:
+        return
+    left = 0
+    right = len(lst) - 1
+    while left < right:
+        cur_sum = lst[left] + lst[right]
+        if cur_sum == s:
+            return left, right
+        elif cur_sum > s:
+            right -= 1
+        else:
+            left += 1
+
+
 if __name__ == '__main__':
-    nums = [0]
-    print(find_number_equal_index(nums))
+    nums = [3]
+    print(find_indexs(nums, 3))
 
